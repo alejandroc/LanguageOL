@@ -1,7 +1,8 @@
 class User < ActiveRecord::Base
   extend EmailValidator
+  #has_secure_password
 
-  validates_presence_of :email, :password
+  validates_presence_of :email, :password, :on => :create
   validates_format_of :email, :with => email_pattern
 
   scope :active, where(:status => 'active')
